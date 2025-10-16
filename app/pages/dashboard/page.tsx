@@ -1,28 +1,20 @@
-import RealEstateBestProjects from '@/components/pages/real-estate/BestProjects';
-import RealEstateBestProjectsSecond from '@/components/pages/real-estate/BestProjectsSecond';
-import RealEstateCTA from '@/components/pages/real-estate/CTA';
-import RealEstateFooter from '@/components/pages/real-estate/Footer';
-import RealEstateHero from '@/components/pages/real-estate/Hero';
-import RealEstateListings from '@/components/pages/real-estate/Listings';
-import RealEstatePartner from '@/components/pages/real-estate/Partner';
-import RealEstateTestimonials from '@/components/pages/real-estate/Testimonials';
-import RealEstateWorkflow from '@/components/pages/real-estate/Workflow';
+import RealEstateBestProjects from '@/components/pages/home/BestProjects';
+import RealEstateFooter from '@/components/pages/home/Footer';
+import RealEstateHero from '@/components/pages/home/Hero';
+import RealEstateListings from '@/components/pages/home/Listings';
+import RealEstatePartner from '@/components/pages/home/Partner';
 import React from 'react';
 
-const RealEstatePage = () => {
+const DashboardPage = () => {
     return (
         <section>
             <RealEstateHero />
             <RealEstatePartner />
             <RealEstateListings />
             <RealEstateBestProjects />
-            <RealEstateWorkflow />
-            <RealEstateTestimonials />
-            <RealEstateCTA />
-            <RealEstateBestProjectsSecond />
             <RealEstateFooter />
         </section>
     );
 };
 
-export default RealEstatePage;
+export default DashboardPage;

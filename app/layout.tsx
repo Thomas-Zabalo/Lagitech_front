@@ -6,12 +6,12 @@ import './fonts/fonts.css';
 import './globals.css';
 
 export const metadata: Metadata = {
-    title: 'Genesis | Multipurpose Landing Template',
-    description: 'Genesis, crafted by Prime, is the ultimate multipurpose landing template built with React and Next.js.',
+    title: 'Lagitech | BabyFoot',
+    description: 'LagitechFoot transforme vos pauses babyfoot en expérience connectée : réserve une table, défie tes amis et suis les scores en direct.',
     openGraph: {
-        title: 'Genesis | Multipurpose Landing Template',
-        description: 'Genesis, crafted by Prime, is the ultimate multipurpose landing template built with React and Next.js.',
-        images: 'https://primefaces.org/cdn/primereact/images/templates/genesis/genesis-meta.jpg'
+        title: 'Lagitech | BabyFoot Connecté',
+        description: 'LagitechFoot : le babyfoot connecté du campus Ynov. Organise des matchs, rejoins des tournois et suis tes statistiques en temps réel.',
+        images: ''
     }
 };
 

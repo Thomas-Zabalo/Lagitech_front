@@ -11,15 +11,14 @@ const RealEstateListings: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ cl
                 <div className="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.07)_0%,rgba(0,0,0,0.07)_100%)]" />
             </div>
             <div className="flex-1">
-                <span className="badge">Building</span>
-                <h3 className="text-3xl lg:text-5xl font-semibold text-surface-950 dark:text-surface-0 !leading-tight mt-4">Explore Exclusive Listings Today</h3>
+                <span className="badge">Ynov Campus</span>
+                <h3 className="text-3xl lg:text-5xl font-semibold text-surface-950 dark:text-surface-0 !leading-tight mt-4">Explore une nouvelle façon de jouer</h3>
                 <p className="text-lg text-surface-500 dark:text-white/64 mt-6">
-                    Our database offers a range of properties, ensuring you find the perfect fit. From luxurious apartments to family homes, our listings bring you the latest and most desirable properties.
+                    Réserve un créneau en un clic, rejoins ton équipe, lance une partie et suis tes statistiques.
                 </p>
                 <p className="text-lg text-surface-500 dark:text-white/64 mt-8">
-                    With advanced search tools and personalized recommendations, finding your dream home is simple. Benefit from our guidance and market knowledge to make informed decisions and secure your ideal home.
+                    Plus besoin d’attendre ou de se demander qui a gagné : tout est enregistré, tout est connecté.
                 </p>
-                <button className="button-gradient mt-8">Get Started</button>
             </div>
         </AnimatedContainer>
     );

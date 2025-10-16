@@ -23,7 +23,7 @@ const realEstatePartnerData = [
         delay: 800
     }
 ];
-const RealEstatePartner: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
+const HomePartner: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
     return (
         <div className={cn('container mt-24 lg:mt-32 ', className)} {...props}>
             <div className="w-full flex flex-wrap items-start justify-between gap-6">
@@ -51,4 +51,4 @@ const RealEstatePartner: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ cla
     );
 };
 
-export default RealEstatePartner;
+export default HomePartner;
