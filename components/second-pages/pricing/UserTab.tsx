@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import AnimatedContainer from '@/components/AnimatedContainer';
 import axios from 'axios';
 
 type User = {
@@ -61,91 +60,94 @@ const UserTab = () => {
   if (loading) return <p className="text-white text-center">Chargement...</p>;
 
   return (
-    <>
-      {/* En-tête du tableau */}
-      <div className="lg:flex hidden items-center bg-white/16 rounded-full border border-white/8 backdrop-blur-[48px]">
-        <div className="flex-1 px-8 py-4"><span className="text-xl font-medium title">Nom</span></div>
-        <div className="flex-1 px-8 py-4"><span className="text-xl font-medium title">Prénom</span></div>
-        <div className="flex-1 px-8 py-4"><span className="text-xl font-medium title">Email</span></div>
-        <div className="w-[20%] px-8 py-4 text-center"><span className="text-xl font-medium title">Action</span></div>
-      </div>
-
-      <div className="mt-3">
-        {users.map((user, index) => (
-          <AnimatedContainer key={user.id} delay={index * 150} className="flex lg:flex-row flex-col lg:border-b border-white/12 border-dashed last:border-none items-center">
+    <table className="w-full text-sm text-left text-gray-600 dark:text-gray-300">
+      <thead className="text-xs uppercase bg-gray-100 dark:bg-gray-600 dark:text-gray-300">
+        <tr>
+          <th scope="col" className="px-6 py-4">Nom</th>
+          <th scope="col" className="px-6 py-4">Prénom</th>
+          <th scope="col" className="px-6 py-4">Email</th>
+          <th scope="col" className="px-6 py-4 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <tr
+            key={user.id}
+            className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+          >
             {editingUser?.id === user.id ? (
               <>
-                <div className="flex-1 lg:px-8 px-4 py-4 text-center lg:text-left">
+                <td className="px-6 py-4">
                   <input
                     type="text"
-                    className="bg-white/10 px-3 py-2 rounded-full text-white w-full"
                     value={editingUser.lastName}
                     onChange={(e) => setEditingUser({ ...editingUser, lastName: e.target.value })}
+                    className="w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded"
                   />
-                </div>
-                <div className="flex-1 lg:px-8 px-4 py-4 text-center lg:text-left">
+                </td>
+                <td className="px-6 py-4">
                   <input
                     type="text"
-                    className="bg-white/10 px-3 py-2 rounded-full text-white w-full"
                     value={editingUser.firstName}
                     onChange={(e) => setEditingUser({ ...editingUser, firstName: e.target.value })}
+                    className="w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded"
                   />
-                </div>
-                <div className="flex-1 lg:px-8 px-4 py-4 text-center lg:text-left">
+                </td>
+                <td className="px-6 py-4">
                   <input
                     type="email"
-                    className="bg-white/10 px-3 py-2 rounded-full text-white w-full"
                     value={editingUser.email}
                     onChange={(e) => setEditingUser({ ...editingUser, email: e.target.value })}
+                    className="w-full bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white px-2 py-1 rounded"
                   />
-                </div>
-                <div className="w-[20%] flex justify-center gap-2 py-4">
+                </td>
+                <td className="px-6 py-4 text-center flex justify-center gap-2">
                   <button
-                    className="button-regular !bg-green-600 hover:!bg-green-700 text-white text-sm px-4 py-2 rounded-full"
                     onClick={handleSaveUser}
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm transition-all"
                   >
                     Enregistrer
                   </button>
                   <button
-                    className="button-regular !bg-gray-600 hover:!bg-gray-700 text-white text-sm px-4 py-2 rounded-full"
                     onClick={() => setEditingUser(null)}
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm transition-all"
                   >
                     Annuler
                   </button>
-                </div>
+                </td>
               </>
             ) : (
               <>
-                <div className="flex-1 lg:px-8 px-4 py-4 text-center lg:text-left">
-                  <span className="text-lg title">{user.lastName}</span>
-                </div>
-                <div className="flex-1 lg:px-8 px-4 py-4 text-center lg:text-left">
-                  <span className="text-lg title">{user.firstName}</span>
-                </div>
-                <div className="flex-1 lg:px-8 px-4 py-4 text-center lg:text-left">
-                  <span className="text-lg title opacity-80">{user.email}</span>
-                </div>
-                <div className="w-[20%] flex justify-center gap-2 py-4">
+                <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">{user.lastName}</td>
+                <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">{user.firstName}</td>
+                <td className="px-6 py-4 opacity-80">{user.email}</td>
+                <td className="px-6 py-4 text-center flex justify-center gap-2">
                   <button
-                    className="button-regular !bg-yellow-600 hover:!bg-yellow-700 text-white text-sm px-4 py-2 rounded-full"
                     onClick={() => setEditingUser(user)}
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-full text-sm transition-all"
                   >
                     Modifier
                   </button>
                   <button
-                    className="button-regular !bg-red-600 hover:!bg-red-700 text-white text-sm px-4 py-2 rounded-full"
                     onClick={() => handleDeleteUser(user.id)}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm transition-all"
                   >
                     Supprimer
                   </button>
-                </div>
+                </td>
               </>
             )}
-          </AnimatedContainer>
+          </tr>
         ))}
-        {users.length === 0 && <p className="text-center text-white/70 mt-6 text-lg">Aucun utilisateur</p>}
-      </div>
-    </>
+        {users.length === 0 && (
+          <tr>
+            <td colSpan={4} className="text-center py-4 text-gray-500 dark:text-gray-400">
+              Aucun utilisateur
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
   );
 };
 
