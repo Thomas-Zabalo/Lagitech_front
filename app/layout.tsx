@@ -1,4 +1,3 @@
-import { ThemeConfig } from '@/components/ThemeConfig';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { HeroContainerStyleType, PrimaryColorType, SurfaceColorType } from '@/lib/types';
 import { applyTheme } from '@/lib/utils';
@@ -38,7 +37,6 @@ export default function RootLayout({
         <html lang="en" style={{ ...primaryVariables, ...surfaceVariables }} suppressHydrationWarning>
             <body className={`antialiased pb-6 relative`} suppressHydrationWarning>
                 <ThemeProvider {...themeProps}>
-                    <ThemeConfig />
                     {children}
                 </ThemeProvider>
             </body>

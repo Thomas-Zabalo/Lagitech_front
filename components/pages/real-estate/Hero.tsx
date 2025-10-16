@@ -6,13 +6,16 @@ import { useTheme } from '@/context/ThemeContext';
 import Image from 'next/image';
 import Link from 'next/link';
 const RealEstateHero = () => {
+    const localLoader = ({ src }: { src: string }) => src;
+
     const { heroContainerType } = useTheme();
     const isWide = heroContainerType === 'wide';
     return (
         <AnimatedContainer visibleClass="!slide-in-from-top-0" className={`${isWide ? 'relative h-[56rem] lg:h-[50rem]' : 'pt-6'}`}>
             {isWide ? (
                 <div className="absolute w-full h-[calc(100%-6rem)] top-0 left-0">
-                    <Image className="w-full h-full object-cover absolute inset-0 -z-2" src="/pages/real-estate/hero-background.jpg" alt="Logistic Hero Background Image" fill sizes="auto" loading="eager" />
+                    <Image className="w-full h-full object-cover absolute inset-0 -z-2"  loader={localLoader}
+                           src="/pages/real-estate/MainBefore.jpg" alt="Logistic Hero Background Image" fill sizes="auto" loading="eager" />
                     <div className="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.12)_100%)]" />
                 </div>
             ) : null}
@@ -20,7 +23,7 @@ const RealEstateHero = () => {
                 <div className={`h-[50rem] lg:h-[44rem] relative ${isWide ? '' : 'shadow-black-card overflow-hidden rounded-3xl lg:rounded-4xl '}`}>
                     {isWide ? null : (
                         <>
-                            <Image className="w-full h-full object-cover absolute inset-0 -z-2" src="/pages/real-estate/hero-background.jpg" alt="Logistic Hero Background Image" fill sizes="auto" loading="eager" />
+                            <Image className="w-full h-full object-cover absolute inset-0 -z-2" src="/pages/real-estate/MainBefore.jpg" alt="Logistic Hero Background Image" fill sizes="auto" loading="eager" />
                             <div className="absolute inset-0 -z-1 bg-[linear-gradient(0deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.12)_100%)]" />
                         </>
                     )}

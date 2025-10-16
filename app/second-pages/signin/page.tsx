@@ -5,8 +5,6 @@ import GenesisLogo from '@/components/icons/shapes/genesis-logo.svg';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
-import GoogleLogo from '@/components/icons/google.svg';
-import AppleLogo from '@/components/icons/apple.svg';
 import CirclePattern from '@/components/CirclePattern';
 import { useTheme } from '@/context/ThemeContext';
 import AnimatedContainer from '@/components/AnimatedContainer';
@@ -28,21 +26,6 @@ const SigninPage = () => {
                                 <h1 className="text-3xl lg:text-6xl font-semibold text-surface-0 text-center mt-8">Sign In</h1>
                                 <p className="text-xl text-white/64 text-center mt-6 max-w-sm mx-auto">Enter your username and password to access your account.</p>
                                 <div className="flex flex-col gap-8 mt-16">
-                                    <div className="flex md:flex-row flex-col items-center gap-4">
-                                        <button className="md:flex-1 w-full button-blur">
-                                            <GoogleLogo />
-                                            Sign in with Google
-                                        </button>
-                                        <button className="md:flex-1 w-full button-blur">
-                                            <AppleLogo />
-                                            Sign in with Apple
-                                        </button>
-                                    </div>
-                                    <div className="flex items-center gap-3.5 py-1">
-                                        <div className="flex-1 h-px bg-[linear-gradient(270deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.00)_100%)]"></div>
-                                        <span className="text-white/72">or</span>
-                                        <div className="flex-1 h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.00)_100%)]"></div>
-                                    </div>
                                     <div className="flex flex-col gap-2">
                                         <label htmlFor="signin_email" className="text-surface-0">
                                             Email Address
@@ -54,17 +37,6 @@ const SigninPage = () => {
                                             Password
                                         </label>
                                         <Input id="signin_password" type="password" />
-                                    </div>
-                                    <div className="flex items-center justify-between gap-2">
-                                        <div>
-                                            <label className="flex items-center gap-2">
-                                                <Checkbox />
-                                                <span className="text-white/64">Remember me</span>
-                                            </label>
-                                        </div>
-                                        <Link href={'forgot-password'} className=" text-white/72 hover:text-white/90 transition-all">
-                                            Forgot password?
-                                        </Link>
                                     </div>
                                     <button type="submit" className="button-regular w-full py-3">
                                         Login
