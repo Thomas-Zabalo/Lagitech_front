@@ -93,6 +93,11 @@ body {
   .button-gradient {
     @apply rounded-full px-5 py-2 bg-main-gradient shadow-blue-card min-w-28 w-fit flex items-center justify-center gap-2 font-medium text-surface-0 cursor-pointer hover:opacity-80 transition-all;
   }
+
+  .button-normal {
+    @apply rounded-full px-5 py-2 dark:bg-white dark:text-black min-w-28 w-fit flex items-center justify-center gap-2 font-medium text-surface-0 cursor-pointer hover:opacity-80 transition-all;
+  }
+
   .button-blur{
     @apply h-11 px-5 rounded-full flex items-center justify-center gap-2 bg-white/16 hover:bg-white/24 transition-all backdrop-blur-[48px] text-surface-0 font-medium border border-white/8 shadow-[0px_2px_5px_0px_rgba(255,255,255,0.06)_inset,0px_12px_20px_0px_rgba(0,0,0,0.06)];
   }
