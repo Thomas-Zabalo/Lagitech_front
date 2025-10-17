@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 type Babyfoot = {
-    id: number;
-    name: string;
-    gamesPlayed: number;
-    condition: string;
-    available: boolean;
+  id: number;
+  name: string;
+  gamesPlayed: number;
+  condition: string;
+  available: boolean;
 };
 
 const mockBabyfoots: Babyfoot[] = [
@@ -16,10 +16,10 @@ const mockBabyfoots: Babyfoot[] = [
 ];
 
 const BabyfootTab = () => {
-    const [babyfoots, setBabyfoots] = useState<Babyfoot[]>([]);
-    const [editingBaby, setEditingBaby] = useState<Babyfoot | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [newBaby, setNewBaby] = useState({ name: '', gamesPlayed: 0, condition: 'Bon', available: true });
+  const [babyfoots, setBabyfoots] = useState<Babyfoot[]>([]);
+  const [editingBaby, setEditingBaby] = useState<Babyfoot | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [newBaby, setNewBaby] = useState({ name: '', gamesPlayed: 0, condition: 'Bon', available: true });
 
     useEffect(() => {
         const fetchBabyfoots = async () => {
@@ -48,6 +48,8 @@ const BabyfootTab = () => {
         }
         setNewBaby({ name: '', gamesPlayed: 0, condition: 'Bon', available: true });
     };
+    fetchBabyfoots();
+  }, []);
 
     const handleDeleteBabyfoot = async (id: number) => {
         setBabyfoots(prev => prev.filter(b => b.id !== id));
@@ -69,7 +71,16 @@ const BabyfootTab = () => {
         setEditingBaby(null);
     };
 
-    if (loading) return <p className="text-white text-center">Chargement...</p>;
+  const handleSaveBabyfoot = async () => {
+    if (!editingBaby) return;
+    setBabyfoots(prev => prev.map(b => (b.id === editingBaby.id ? editingBaby : b)));
+    try {
+      await axios.put(`/api/babyfoots/${editingBaby.id}`, editingBaby);
+    } catch (err) {
+      console.warn('API PUT non dispo', err);
+    }
+    setEditingBaby(null);
+  };
 
     return (
         <>
