@@ -13,7 +13,7 @@ const UserManagementTable = () => {
       <div className="flex justify-center gap-4 mb-6">
         <button
           className={`button-regular px-6 py-2 rounded-full transition-all ${
-            activeTab === "users" ? "bg-white/20" : "bg-white/10 hover:bg-white/20"
+            activeTab === "users" ? "bg-gray-700" : "bg-gray-500 hover:bg-gray-700"
           }`}
           onClick={() => setActiveTab("users")}
         >
@@ -21,7 +21,7 @@ const UserManagementTable = () => {
         </button>
         <button
           className={`button-regular px-6 py-2 rounded-full transition-all ${
-            activeTab === "babyfoots" ? "bg-white/20" : "bg-white/10 hover:bg-white/20"
+            activeTab === "babyfoots" ? "bg-gray-700" : "bg-gray-500 hover:bg-gray-700"
           }`}
           onClick={() => setActiveTab("babyfoots")}
         >
@@ -29,7 +29,7 @@ const UserManagementTable = () => {
         </button>
       </div>
 
-      <div className="rounded-3xl lg:rounded-4xl bg-main-gradient-to-top overflow-hidden relative p-6 lg:p-7 shadow-black-card">
+      <div className="rounded-3xl lg:rounded-4xl overflow-hidden relative p-6 lg:p-7 shadow-black-card">
         {/* ==== VUE UTILISATEURS ==== */}
         {activeTab === "users" && (
           <UserTab/>
