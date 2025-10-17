@@ -37,23 +37,23 @@ const SigninPage = () => {
         try {
             const response = await axios.post('http://localhost:8080/auth/login', {
                 email: email,
-                password: password,
+                password: password
             });
 
             setIdentifier('');
             setPassword('');
 
             const token = response.data.token;
-            console.log("Token JWT :", token);
+            console.log('Token JWT :', token);
 
             localStorage.setItem('token', token);
             localStorage.setItem('email', response.data.email);
             localStorage.setItem('nom', response.data.username);
             localStorage.setItem('equipe', response.data.team_id?.id ?? '');
             localStorage.setItem('is_admin', response.data.is_admin);
+            localStorage.setItem('user_id', response.data.user_id);
 
-            router.push('/pages/home')
-
+            router.push('/pages/home');
         } catch (err: any) {
             console.error(err);
             if (err.response) {
@@ -64,11 +64,10 @@ const SigninPage = () => {
         }
     };
 
-
     return (
-        <AnimatedContainer className='shadow-black-card pt-6'>
+        <AnimatedContainer className="shadow-black-card pt-6">
             <div className="container">
-                <div className='relative overflow-hidden rounded-xl lg:rounded-2xl dark:shadow-black-card'>
+                <div className="relative overflow-hidden rounded-xl lg:rounded-2xl dark:shadow-black-card">
                     <CirclePattern className="w-[82rem] lg:block hidden absolute -bottom-1/2 translate-y-24 left-1/2 -translate-x-1/2" />
                     <div className="relative z-20 px-6">
                         <Navbar />
@@ -78,14 +77,7 @@ const SigninPage = () => {
                                 className="bg-white/5 px-6 md:px-8 pt-14 pb-10 border border-white/10 backdrop-blur-[24px] rounded-xl lg:rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:shadow-[0_10px_25px_rgba(0,0,0,0.2)]"
                             >
                                 <div className="flex items-center justify-center border dark:border-white/10 border-black/60 w-[5rem] h-[5rem] mx-auto rounded-lg dark:bg-white/10 bg-black/5 shadow-inner">
-                                    <svg
-                                        width="34"
-                                        height="34"
-                                        viewBox="0 0 25 25"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="text-black dark:text-white"
-                                    >
+                                    <svg width="34" height="34" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black dark:text-white">
                                         <path
                                             d="M12.6598 0C19.4042 0.000123562 24.8724 5.46749 24.8727 12.2119H19.8727C19.8724 8.22892 16.6428 5.00012 12.6598 5C8.67687 5.00024 5.44812 8.22899 5.44788 12.2119C5.44788 16.1304 8.57268 19.3163 12.4664 19.4189V24.4219L12.3453 24.4209C5.74617 24.2539 0.447876 18.8513 0.447876 12.2119C0.448121 5.46757 5.91545 0.00024481 12.6598 0Z"
                                             className="fill-current"
@@ -93,7 +85,6 @@ const SigninPage = () => {
                                         <circle cx="20.3171" cy="19.8694" r="4.55541" className="fill-current" />
                                     </svg>
                                 </div>
-
 
                                 <h1 className="text-3xl lg:text-5xl font-semibold dark:text-white text-black text-surface-0 text-center mt-8 tracking-tight">Connexion</h1>
                                 <p className="text-lg dark:text-white/70 text-black/70 text-center mt-4 max-w-sm mx-auto leading-relaxed">Entrez votre identifiant Ynov et votre mot de passe pour accéder à votre compte.</p>
@@ -151,7 +142,10 @@ const SigninPage = () => {
                                     </div>
 
                                     {/* ---- Bouton ---- */}
-                                    <button type="submit" className="button-regular w-full py-3 rounded-md bg-black/5 dark:bg-white/5 dark:hover:bg-black/10 dark:text-white hover:bg-black/10 font-medium tracking-wide transition-all duration-300 hover:opacity-90">
+                                    <button
+                                        type="submit"
+                                        className="button-regular w-full py-3 rounded-md bg-black/5 dark:bg-white/5 dark:hover:bg-black/10 dark:text-white hover:bg-black/10 font-medium tracking-wide transition-all duration-300 hover:opacity-90"
+                                    >
                                         Se connecter
                                     </button>
 
