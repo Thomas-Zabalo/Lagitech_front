@@ -11,7 +11,6 @@ const RealEstateHero = () => {
     const { heroContainerType } = useTheme();
     const isWide = heroContainerType === 'wide';
 
-    // 👉 Fonction de scroll fluide
     const handleSmoothScroll = (e) => {
         e.preventDefault();
         const target = document.querySelector('#babyfoot');
@@ -59,7 +58,6 @@ const RealEstateHero = () => {
                                 Créer un match
                             </Link>
 
-                            {/* 🔥 Bouton modifié avec scroll fluide */}
                             <Link
                                 href="#babyfoot"
                                 onClick={handleSmoothScroll}

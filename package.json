@@ -11,6 +11,7 @@
         "format:check": "prettier --check \"**/*.{js,mjs,ts,tsx,mts,d.ts,html}\""
     },
     "dependencies": {
+        "@stomp/stompjs": "^7.2.1",
         "axios": "^1.12.2",
         "clsx": "^2.1.1",
         "embla-carousel": "^8.3.0",
@@ -21,6 +22,7 @@
         "react": "^18",
         "react-dom": "^18",
         "react-icons": "^5.5.0",
+        "sockjs-client": "^1.6.1",
         "tailwind-merge": "^2.5.2",
         "tailwindcss-animate": "^1.0.7",
         "tailwindcss-animation-delay": "^2.0.1"
@@ -30,6 +32,7 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "@types/sockjs-client": "^1.5.4",
         "eslint": "^8",
         "eslint-config-next": "14.2.14",
         "postcss": "^8",
