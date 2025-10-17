@@ -23,10 +23,10 @@ const TeamHero = () => {
                 >
                     <Navbar />
                     <div className="lg:my-16 mt-10 px-6 lg:px-0 flex flex-col items-center text-center">
-                        <h1 className="title text-4xl lg:text-8xl font-bold leading-tight text-white">
+                        <h1 className="font-bold text-4xl lg:text-8xl font-bold leading-tight text-black dark:text-white">
                             Les Équipes
                         </h1>
-                        <p className="mt-6 description text-white/72 text-lg lg:text-2xl max-w-xl">
+                        <p className="mt-6 description text-black/72 dark:text-white/72 text-lg lg:text-2xl max-w-xl">
                             Découvre toutes les équipes de babyfoot et crée la tienne pour
                             affronter les autres !
                         </p>

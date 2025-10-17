@@ -25,7 +25,7 @@ const realEstatePartnerData = [
 ];
 const HomePartner: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
     return (
-        <div id="#babyfoot" className={cn('container mt-24 lg:mt-32 ', className)} {...props}>
+        <div id="babyfoot" className={cn('container mt-24 lg:mt-32 ', className)} {...props}>
             <div className="w-full flex flex-wrap items-start justify-between gap-6">
                 <h1 className="max-w-[34rem] text-3xl lg:text-6xl font-semibold text-surface-950 dark:text-surface-0 leading-tight">Ton Nouvel Outil De Jeu Au Souk</h1>
                 <div className="max-w-[34rem] ">
