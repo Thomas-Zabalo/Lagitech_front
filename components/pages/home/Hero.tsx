@@ -10,6 +10,7 @@ const RealEstateHero = () => {
 
     const { heroContainerType } = useTheme();
     const isWide = heroContainerType === 'wide';
+
     return (
         <AnimatedContainer visibleClass="!slide-in-from-top-0" className={`${isWide ? 'relative h-[56rem] lg:h-[50rem]' : 'pt-6'}`}>
             {isWide ? (
