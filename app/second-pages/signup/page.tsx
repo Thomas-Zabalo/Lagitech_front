@@ -5,8 +5,10 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import CirclePattern from '@/components/CirclePattern';
 import AnimatedContainer from '@/components/AnimatedContainer';
+import { useRouter } from 'next/navigation';
 
 const SignupPage = () => {
+    const router = useRouter();
     const [username, setUsername] = useState('');
     const [emailIdentifier, setEmailIdentifier] = useState('');
     const [password, setPassword] = useState('');
@@ -20,11 +22,52 @@ const SignupPage = () => {
         }
     }, [emailIdentifier]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!username.trim() || !emailIdentifier.trim() || !password.trim()) {
+            alert("Veuillez remplir tous les champs");
+            return;
+        }
+
         const email = `${emailIdentifier}@ynov.com`;
-        console.log('Nouvelle inscription :', { username, email, password });
+
+        try {
+            const response = await fetch('http://localhost:8080/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: username,
+                    email: email,
+                    password: password,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.error || "Erreur lors de l'inscription");
+                return;
+            }
+
+            // Stockage du token JWT
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', data.username);
+
+            router.push('/second-pages/signin');
+
+            setUsername('');
+            setEmailIdentifier('');
+            setPassword('');
+
+        } catch (err) {
+            console.error(err);
+            alert("Impossible de contacter le serveur");
+        }
     };
+
 
     return (
         <AnimatedContainer className='shadow-black-card pt-6'>

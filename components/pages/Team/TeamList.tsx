@@ -11,13 +11,19 @@ type Team = {
 // Configuration axios
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Accept'] = 'application/json';
-
+;
 const TeamList = () => {
     const [teams, setTeams] = useState<Team[]>([]);
     const [modalOpen, setModalOpen] = useState(false);
     const [newTeamName, setNewTeamName] = useState('');
     const [userTeam, setUserTeam] = useState<Team | null>(null);
     const [loading, setLoading] = useState(true);
+    const [team, setTeam] = useState<string | null>(null);
+
+    useEffect(() => {
+        const storedEquipe = localStorage.getItem('equipe');
+        if (storedEquipe) setTeam(storedEquipe);
+    }, []);
 
     // Récupération des équipes depuis l'API
     useEffect(() => {
@@ -60,13 +66,12 @@ const TeamList = () => {
                 }
             );
 
-            // Ajouter la nouvelle équipe à la liste (triée)
             const updatedTeams = [...teams, response.data].sort((a, b) =>
                 a.name.localeCompare(b.name)
             );
             setTeams(updatedTeams);
 
-            setUserTeam(response.data); // Rejoindre automatiquement
+            setUserTeam(response.data);
             setNewTeamName('');
             setModalOpen(false);
             alert(`Équipe "${response.data.name}" créée et rejointe !`);
@@ -79,11 +84,10 @@ const TeamList = () => {
 
     const joinTeam = (team: Team) => {
         setUserTeam(team);
-        alert(`Tu as rejoint ${team.name} !`);
     };
 
     const leaveTeam = () => {
-        if (userTeam) alert(`Tu as quitté ${userTeam.name} !`);
+        if (userTeam)
         setUserTeam(null);
     };
 
@@ -101,17 +105,18 @@ const TeamList = () => {
         <div className="container mx-auto mt-16 px-4">
             <div className="flex justify-end mb-4">
                 <button
-                    disabled={!!userTeam}
                     onClick={() => setModalOpen(true)}
-                    className="mt-6 px-5 py-2 rounded-full flex items-center justify-center gap-2 font-medium cursor-pointer
-                    text-surface-950 bg-transparent border border-black/24
-                    hover:bg-black/10 hover:opacity-80 transition-all duration-300
-                    dark:bg-white dark:text-black dark:border-0 dark:shadow-blue-card
-                    "
+                    className={`mt-6 px-5 py-2 rounded-full flex items-center justify-center gap-2 font-medium cursor-pointer
+            text-surface-950 bg-transparent border border-black/24
+            hover:bg-black/10 hover:opacity-80 transition-all duration-300
+            dark:bg-white dark:text-black dark:border-0 dark:shadow-blue-card
+            ${teams == null ? "opacity-50 cursor-not-allowed" : ""}`}
+                    disabled={teams == null}
                 >
                     Créer une équipe
                 </button>
             </div>
+
 
             {userTeam && (
                 <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg mb-6 flex justify-between items-center">

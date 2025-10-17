@@ -6,8 +6,10 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import CirclePattern from '@/components/CirclePattern';
 import AnimatedContainer from '@/components/AnimatedContainer';
+import { useRouter } from 'next/navigation';
 
 const SigninPage = () => {
+    const router = useRouter();
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -33,27 +35,35 @@ const SigninPage = () => {
         const email = `${identifier}@ynov.com`;
 
         try {
-            const response = await axios.post('http://localhost:8080/auth/register', {
-                name: identifier,
+            const response = await axios.post('http://localhost:8080/auth/login', {
                 email: email,
                 password: password,
             });
 
-            // succès
-            alert(response.data); // "Utilisateur créé !"
             setIdentifier('');
             setPassword('');
+
+            const token = response.data.token;
+            console.log("Token JWT :", token);
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('email', response.data.email);
+            localStorage.setItem('nom', response.data.username);
+            localStorage.setItem('equipe', response.data.equipe);
+            localStorage.setItem('is_admin', response.data.is_admin);
+
+            router.push('/pages/home')
 
         } catch (err: any) {
             console.error(err);
             if (err.response) {
-                // le backend renvoie un message d'erreur
                 setError(err.response.data || 'Erreur lors de la création du compte');
             } else {
                 setError('Impossible de contacter le serveur');
             }
         }
     };
+
 
     return (
         <AnimatedContainer className='shadow-black-card pt-6'>
@@ -141,7 +151,7 @@ const SigninPage = () => {
                                     </div>
 
                                     {/* ---- Bouton ---- */}
-                                    <button type="submit" className="button-regular w-full py-3 bg-black/5 hover:bg-black/10  rounded-md font-medium tracking-wide transition-all duration-300 hover:opacity-90">
+                                    <button type="submit" className="button-regular w-full py-3 rounded-md bg-black/5 dark:bg-white/5 dark:hover:bg-black/10 dark:text-white hover:bg-black/10 font-medium tracking-wide transition-all duration-300 hover:opacity-90">
                                         Se connecter
                                     </button>
 

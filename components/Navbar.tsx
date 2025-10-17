@@ -1,11 +1,19 @@
 'use client';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from './ui/dropdown';
 
 const Navbar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, ...props }) => {
+    const [connected, setConnected] = useState<string | null>(null);
+
+    useEffect(() => {
+        // Récupération depuis le localStorage
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) setConnected(storedToken);
+    }, []);
+
     return (
         <nav className={cn('flex items-center relative z-[99999] justify-between py-6 w-[calc(100%-3rem)] max-h-[75px] mx-auto border-b border-black/10 dark:border-white/10 border-dashed', className)} {...props}>
             <Link href="/">
@@ -34,12 +42,28 @@ const Navbar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, ...pro
                 </li>
 
             </ul>
-            <ul className="hidden lg:flex items-center">
-                <li>
-                    <Link href="/second-pages/signup" className="button-regular">
-                       Se connecter
-                    </Link>
-                </li>
+            <ul className="hidden lg:flex items-center gap-3">
+                {connected ? (
+                    <>
+                        <li>
+                            <button
+                                className="button-regular"
+                                onClick={() => {
+                                    localStorage.clear(); // ou removeItem('token') si tu veux juste déconnecter
+                                    window.location.href = '/second-pages/signin';
+                                }}
+                            >
+                                Déconnexion
+                            </button>
+                        </li>
+                    </>
+                ) : (
+                    <li>
+                        <Link href="/second-pages/signin" className="button-regular">
+                            Se connecter
+                        </Link>
+                    </li>
+                )}
             </ul>
             <DropdownMenu unstyled className="lg:hidden block">
                 <DropdownMenuTrigger className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-surface-0 text-surface-950">
@@ -58,6 +82,9 @@ const Navbar: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, ...pro
                        </Link>
                         <Link href="/pages/dashboard" className="py-2 px-3 rounded-lg hover:bg-surface-200 font-medium text-surface-500 hover:text-surface-950">
                             Dashboard
+                        </Link>
+                        <Link href="/second-pages/signin" className="py-2 px-3 rounded-lg hover:bg-surface-200 font-medium text-surface-500 hover:text-surface-950">
+                            Se connecter
                         </Link>
                     </div>
                 </DropdownMenuContent>
