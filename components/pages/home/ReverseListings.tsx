@@ -16,7 +16,7 @@ const ReversedRealEstateListings: React.FC<React.HTMLAttributes<HTMLDivElement>>
                     Rejoins la communauté, crée des matchs, participe aux tournois et découvre une nouvelle façon de vivre le Souk !
                 </p>
                 <button
-                    className=" mt-6
+                    className="mt-6
                     px-5 py-2 rounded-full flex items-center justify-center gap-2 font-medium cursor-pointer
                     text-surface-950 bg-transparent border border-black/24
                     hover:bg-black/10 hover:opacity-80 transition-all duration-300

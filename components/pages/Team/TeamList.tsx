@@ -103,7 +103,11 @@ const TeamList = () => {
                 <button
                     disabled={!!userTeam}
                     onClick={() => setModalOpen(true)}
-                    className={`button-regular ${userTeam ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className="mt-6 px-5 py-2 rounded-full flex items-center justify-center gap-2 font-medium cursor-pointer
+                    text-surface-950 bg-transparent border border-black/24
+                    hover:bg-black/10 hover:opacity-80 transition-all duration-300
+                    dark:bg-white dark:text-black dark:border-0 dark:shadow-blue-card
+                    "
                 >
                     Créer une équipe
                 </button>

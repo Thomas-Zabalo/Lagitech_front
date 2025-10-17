@@ -13,10 +13,10 @@ const MatchesHero = () => {
                 <div className={`relative ${isWide ? '' : 'shadow-black-card overflow-hidden rounded-3xl lg:rounded-4xl '}`}>
                     <Navbar />
                     <div className="lg:my-16 mt-10 px-6 lg:px-0 flex flex-col items-center">
-                        <h1 className="title text-4xl lg:text-8xl font-bold leading-tight text-white">
+                        <h1 className="font-bold text-4xl lg:text-8xl font-bold leading-tight text-black dark:text-white">
                             Les Matchs du Souk
                         </h1>
-                        <p className="mt-6 description text-white/72 text-lg lg:text-2xl max-w-lg">
+                        <p className="mt-6 description text-black/72 dark:text-white/72 text-lg lg:text-2xl max-w-lg">
                             Suis les scores en direct !
                         </p>
                     </div>

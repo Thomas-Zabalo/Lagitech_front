@@ -84,7 +84,7 @@ const SignupPage = () => {
                                             <span ref={measureRef} className="absolute opacity-0 pointer-events-none whitespace-pre text-base font-normal px-3">
                                                 {emailIdentifier}
                                             </span>
-                                            <span className="absolute top-1/2 -translate-y-1/2 text-white/60 pointer-events-none select-none" style={{ left: `calc(${textWidth}px - 0.6rem)` }}>
+                                            <span className="absolute top-1/2 -translate-y-1/2 text-black/60 dark:text-white/60 pointer-events-none select-none" style={{ left: `calc(${textWidth}px - 0.6rem)` }}>
                                                 @ynov.com
                                             </span>
                                         </div>
@@ -105,8 +105,8 @@ const SignupPage = () => {
                                     </div>
 
                                     {/* ---- Bouton Register ---- */}
-                                    <button type="submit" className="button-regular w-full py-3 rounded-md bg-black/5 hover:bg-black/10 font-medium tracking-wide transition-all duration-300 hover:opacity-90">
-                                        Envoyer
+                                    <button type="submit" className="button-regular w-full py-3 rounded-md bg-black/5 dark:bg-white/5 dark:hover:bg-black/10 dark:text-white hover:bg-black/10 font-medium tracking-wide transition-all duration-300 hover:opacity-90">
+                                        S'inscrire
                                     </button>
 
                                     {/* ---- Lien vers Signin ---- */}

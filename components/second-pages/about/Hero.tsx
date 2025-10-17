@@ -15,8 +15,8 @@ const AboutHero = () => {
                 </div>
                 <div className="relative z-20">
                     <Navbar />
-                    <h1 className="max-w-[calc(100%-3rem)] md:max-w-5xl mx-auto title lg:text-7xl text-4xl text-center mt-18">Dashboard Administrateur</h1>
-                    <p className="mt-6 max-w-[calc(100%-3rem)] md:max-w-2xl text-lg lg:text-xl text-white/64 text-center mx-auto">
+                    <h1 className="max-w-[calc(100%-3rem)] md:max-w-5xl mx-auto font-bold text-black dark:text-white lg:text-7xl text-4xl text-center mt-18">Dashboard Administrateur</h1>
+                    <p className="mt-6 max-w-[calc(100%-3rem)] md:max-w-2xl text-lg lg:text-xl text-black/64 dark:text-white/64 text-center mx-auto">
                         Bienvenue sur le tableau de bord administrateur. Gérez les utilisateurs, et les différents babyfoot en toute simplicité.
                     </p>
                 </div>

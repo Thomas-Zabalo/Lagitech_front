@@ -25,7 +25,7 @@ type MatchDetail = {
     equipe_2: Team;
     vitesse_max: number;
     babyfoot: any;
-    createAt: string | null;
+    created_at: string | null;
     goals: Goal[];
 };
 
@@ -111,7 +111,7 @@ const MatchDetailPage = () => {
                 <div className="bg-white dark:bg-gray-800 shadow-sm p-8 mb-6 rounded-md">
                     <div className="flex justify-between items-center mb-8">
                         <span className="text-sm text-gray-500 dark:text-gray-400">
-                            <span>{match.createAt ? new Date(match.createAt).toLocaleString('fr-FR') : 'Date non définie'}</span>
+                            <span>{match.created_at ? new Date(match.created_at).toLocaleString('fr-FR') : 'Date non définie'}</span>
                         </span>
                         <span className={`px-3 py-1 text-xs font-medium ${isFinished ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 rounded-md' : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 rounded-md'}`}>
                             {isFinished ? 'Terminé' : 'À venir'}

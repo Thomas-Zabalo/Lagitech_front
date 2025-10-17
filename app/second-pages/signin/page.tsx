@@ -142,7 +142,7 @@ const SigninPage = () => {
 
                                     {/* ---- Bouton ---- */}
                                     <button type="submit" className="button-regular w-full py-3 bg-black/5 hover:bg-black/10  rounded-md font-medium tracking-wide transition-all duration-300 hover:opacity-90">
-                                        Envoyer
+                                        Se connecter
                                     </button>
 
                                     {/* ---- Lien création ---- */}
