@@ -1,0 +1,39 @@
+# ---- Étape 1 : Build de l'application Next.js ----
+FROM node:20 AS builder
+
+# Répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers nécessaires
+COPY package*.json ./
+
+# Installer les dépendances
+RUN npm install
+
+# Copier tout le reste du code
+COPY . .
+
+# Construire l’application Next.js
+RUN npm run build
+
+# ---- Étape 2 : Image finale légère ----
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Copier les fichiers nécessaires au runtime
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package*.json ./
+
+# Installer uniquement les dépendances de production
+RUN npm install --omit=dev
+
+# Exposer le port de Next.js
+EXPOSE 3000
+
+# Commande de démarrage
+CMD ["npm", "start"]
